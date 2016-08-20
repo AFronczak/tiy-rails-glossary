@@ -1,0 +1,32 @@
+= form_for :term, url: terms_path do |f|
+  -if @term.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@term.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - @term.errors.full_messages.each do |msg|
+          %li
+          =msg
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :definition
+    %br
+    = f.text_field :definition
+  %p
+    = f.label :author
+    %br
+    = f.text_field :author
+  %p
+    =f.label :web_link
+    %br
+    = f.text_field :web_link
+  %p
+    =f.label :category_id
+    %br
+    =f.text_field :category_id
+  %p
+    =f.submit
