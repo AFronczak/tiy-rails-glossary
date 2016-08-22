@@ -7,4 +7,22 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+  .navbar
+    .container
+      .col-md-8
+        %a
+          =root_path
+          %image(src="logo-white.png")
+
+      .col-md-4
+        - if logged_in?
+          Logged in:
+          =current_user.name
+          \|
+          = link_to "Log Out", logout_path
+        - else
+          =link_to "Login", login_path
+          \|
+          =link_to "Signup", signup_path
+  .container
     = yield

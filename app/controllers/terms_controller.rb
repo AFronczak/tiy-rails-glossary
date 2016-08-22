@@ -1,6 +1,5 @@
 class TermsController < ApplicationController
-
-
+  before_filter :authorize!
   def index
     @terms = Term.all
   end
@@ -38,6 +37,17 @@ class TermsController < ApplicationController
       render 'edit'
     end
   end
+
+
+  # def update
+  #   @article = Article.find(params[:id])
+  #
+  #   if @article.update(article_params)
+  #     redirect_to @article
+  #   else
+  #     render 'edit'
+  #   end
+  # end
 
   def destroy
     @term = Term.find(params[:id])
